@@ -27,9 +27,10 @@ rsync -a --relative -e "ssh -i ${identity_file}" \
 --exclude "todo.txt" \
 . ${server}:~/venv/noagenda-db/noagenda-db/
 
-command="source ~/venv/noagenda-db/bin/activate;"
-command+="cd ~/venv/noagenda-db/noagenda-db;"
-command+="python manage.py collectstatic --noinput;"
+command="source ~/venv/noagenda-db/bin/activate &&"
+command+="cd ~/venv/noagenda-db/noagenda-db &&"
+command+="pip install -r requirements.txt &&"
+command+="python manage.py collectstatic --noinput &&"
 command+="./bin/reload-gunicorn.sh"
 ssh -i ${identity_file} ${server} ${command}
 echo "Deploy complete"
