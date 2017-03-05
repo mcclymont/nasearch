@@ -124,3 +124,7 @@ ul {
 .link-icon:hover {
   color: inherit;
 }
+
+.navbar {
+  margin-bottom: 0;
+}
