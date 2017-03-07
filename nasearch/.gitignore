@@ -1,0 +1,3 @@
+whoosh_index/
+secret_key.txt
+__init__.py

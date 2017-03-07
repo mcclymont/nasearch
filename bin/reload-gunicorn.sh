@@ -11,6 +11,6 @@ fi
 
 source ~/venv/noagenda-db/bin/activate
 gunicorn --error-log ./gunicorn_error \
-    --bind localhost:8001 nadb.wsgi:application &
+    --bind localhost:8001 nasearch.wsgi:application &
 
 echo "Gunicorn listening on port 8001"

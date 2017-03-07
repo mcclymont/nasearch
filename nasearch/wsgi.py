@@ -1,5 +1,5 @@
 """
-WSGI config for nadb project.
+WSGI config for nasearch project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nadb.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nasearch.settings")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()

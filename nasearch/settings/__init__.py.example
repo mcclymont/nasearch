@@ -1,0 +1,6 @@
+from __future__ import absolute_import
+from .dev import *  # or .prod if you want prod
+
+# Set secrets here - don't add this file to version control
+# DATABASES['default']['USER'] = '<username>'
+# DATABASES['default']['PASSWORD'] = '<password>'

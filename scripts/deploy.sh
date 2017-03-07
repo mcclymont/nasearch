@@ -14,9 +14,8 @@ identity_file=${2}
 echo "Transferring files to ${server}"
 rsync -a --relative -e "ssh -i ${identity_file}" \
 --exclude "*.pyc" \
+--exclude "nasearch/settings/__init__.py" \
 --exclude "whoosh_index" \
---exclude "cleaned_settings.py" \
---exclude "settings_dev.py" \
 --exclude ".git" \
 --exclude ".gitignore" \
 --exclude "*.opml" \
