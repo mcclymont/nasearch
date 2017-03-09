@@ -89,14 +89,14 @@ To get a development version up and running, you should first install the depend
 
 On debian/ubuntu based systems, these are all in the package manager and you can install with `sudo apt-get install python-pip libmysqlclient-dev libxslt1-dev python-dev`. You can then use pip with the requirements.txt file. `pip install -r requirements.txt`. It is recommended that you set up a virtualenv to use for development, there are plenty of guides online that can walk you through that process.
 
+Inside the directory nasearch/settings, copy __init__.py.example to __init__.py and make modifications as needed for your environment
+
 Deployment
 ------------
 For convenience I've included the deploy script as well as some info on the setup on the server. nginx is used as reverse proxy and to serve static files. Requests for the search application are forwarded on to a gunicorn instance.
-You can install all dependencies on the server with `sudo apt-get install nginx python-pip libmysqlclient-dev libxslt1-dev python-dev mysql-server`
+You can install all dependencies on the server with `sudo apt-get install nginx gunicorn python-pip libmysqlclient-dev libxslt1-dev python-dev mysql-server`
 After this you must configure nginx and mysql-server. Sample nginx configuration file is included in the configs folder.
 After that, you should set up a virtualenv and install the python dependencies. The server should be ready to go.
-
-To deploy, you must first configure the settings_cleaned.py file to conform to Django standards. Rename it to settings.py and fill in the secret key and database connection info for your server. You should also modify the deploy.sh script in scripts/ to copy to the correct server. The deploy scripts takes care of running the collectstatic command for Django.
 
 Populating the database
 -----------
