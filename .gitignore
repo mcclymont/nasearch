@@ -5,3 +5,4 @@ settings_dev.py
 *.sublime-workspace
 .projectile
 .tern-port
+bin/reload-server
