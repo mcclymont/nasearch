@@ -21,7 +21,7 @@
                 href="#">NA Shownote Search</a>
             <span class="nav navbar-text">
             (fork me or report issues on
-            <a href="https://github.com/lifenoodles/nasearch">github</a>)
+            <a href="https://github.com/mcclymont/nasearch">github</a>)
             </span>
         </div>
     </div>
@@ -48,7 +48,7 @@
             <div id="top-input" class="input-group">
             <span class="input-group-addon front-label">Topic Filters</span>
             <input data-toggle="dropdown" id="topic-field" type="text" class="form-control">
-            {% include "topic-popup.html" %}
+            {% include "./topic-popup.html" %}
             <span class="input-group-btn">
                     <button id="search-button" class="btn btn-primary" type="button">Search</button>
                 </span>
@@ -56,7 +56,7 @@
         </div>
         <div class="row">
             <div class="selected-topics">
-                {% include "topic-selected.html" %}
+                {% include "./topic-selected.html" %}
                 <span class="topic-suggestion fake-suggestion invisible">Topic</span>
             </div>
         </div>

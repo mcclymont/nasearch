@@ -2,21 +2,19 @@
 
 set -eu
 
-if [ "${#}" -ne 2 ]; then
-    echo "Usage: ${0} <user@server> <identity_file>"
+if [ "${#}" -ne 1 ]; then
+    echo "Usage: ${0} <user@server>"
     exit 1
 fi
 
 server=${1}
-identity_file=${2}
 
 # use rsync to copy needed files
 echo "Transferring files to ${server}"
-rsync -a --relative -e "ssh -i ${identity_file}" \
+rsync -a --relative \
 --exclude "*.pyc" \
+--exclude "nasearch/settings/__init__.py" \
 --exclude "whoosh_index" \
---exclude "cleaned_settings.py" \
---exclude "settings_dev.py" \
 --exclude ".git" \
 --exclude ".gitignore" \
 --exclude "*.opml" \
@@ -27,9 +25,11 @@ rsync -a --relative -e "ssh -i ${identity_file}" \
 --exclude "todo.txt" \
 . ${server}:~/venv/noagenda-db/noagenda-db/
 
-command="source ~/venv/noagenda-db/bin/activate;"
-command+="cd ~/venv/noagenda-db/noagenda-db;"
-command+="python manage.py collectstatic --noinput;"
-command+="./bin/reload-gunicorn.sh"
-ssh -i ${identity_file} ${server} ${command}
+command="source ~/venv/noagenda-db/bin/activate &&"
+command+="cd ~/venv/noagenda-db/noagenda-db &&"
+command+="pip install -r requirements.txt &&"
+command+="python manage.py migrate &&"
+command+="python manage.py collectstatic --noinput &&"
+command+="./bin/reload-server"
+ssh ${server} ${command} &&
 echo "Deploy complete"
