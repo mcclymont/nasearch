@@ -9,8 +9,9 @@ if [ -n "${pids}" ]; then
     echo ${pids} | xargs kill
 fi
 
-source ~/venv/noagenda-db/bin/activate
-gunicorn --error-log ./gunicorn_error \
-    --bind localhost:8001 nasearch.wsgi:application &
-
-echo "Gunicorn listening on port 8001"
+source ~/venv/noagenda-db/bin/activate && \
+  gunicorn --error-log ./gunicorn_error \
+  --bind localhost:8001 \
+  --pythonpath "${VIRTUAL_ENV}/lib/python2.7/site-packages" \
+  nasearch.wsgi:application && \
+  echo "Gunicorn listening on port 8001"
