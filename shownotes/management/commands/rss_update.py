@@ -35,6 +35,6 @@ class Command(BaseCommand):
             except:
                 print('Error updating shownotes for show {}, removing source:'
                       .format(number))
-                ShowSource.objects.get(show_number=number).delete()
                 import traceback
                 traceback.print_exc()
+                ShowSource.objects.get(show_number=number).delete()
